@@ -1,23 +1,15 @@
 <?php
-$servername="locaihost";
-$usename="root";
-$password="";
-$dbname="worawut_ex3";
+$servername = "127.0.0.1:3310";  //
+$username = "root";
+$password = "";
+$dbname = "crud_worawut";
 
-//Cract connection สร้างการเชื่อมต่อ
-$connection = new mysqli($Name,$Email,$Phone,$address);
+try {
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Check connection ตรวจสอบการเชื่อมต่อ
-if ($connection->connect_errno){
-    die("connection failed: " . $coonection->connect_error);
+echo "สถานะเซื่อมต่อ DB สำเร็จ";
+} catch (PDOException $e) {
+    echo "Connection failed". $e->getMessage();
 }
-//Read all row from datada eadle อ่านข้อมูลทั้งตาราง
-$sql = "SELECT * FROM worawut_ex3";
-$result = $connection->query($sql);
-
-if (!$result){
-    ("Invalid query: " . $connection_assoc);
-
-}
-
 ?>
